@@ -1,1 +1,3 @@
 # CollegeResearch
+## 研究で利用したStencil計算のあれこれ+GPUDirectのプログラムをおいてます。
+GPUDirectを用いない従来手法のプログラムはフォルダにまとめてます。
