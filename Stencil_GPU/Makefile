@@ -12,5 +12,5 @@ Stencil_1D1GPU:Stencil_1D1GPU.cu
 	nvcc -arch=sm_60 $? -O3 -o $@
 Stencil_1DMultiGPU:Stencil_1DMultiGPU.cu
 	nvcc -arch=sm_60 $? -O3 -Xcompiler -fopenmp -o $@
-Stencil_2DCPU:Stencil_2DCPU.cpp
+Stencil_2DCPU:Stencil_2D.cpp
 	g++ $? -O3 -o $@	
