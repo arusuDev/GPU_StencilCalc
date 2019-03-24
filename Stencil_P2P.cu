@@ -6,12 +6,12 @@
 #include <utility>	//C++11
 
 #define BLOCK 32
-#define X 32
-#define Y 32
-#define Z 32
+#define X 1024 
+#define Y 1024
+#define Z 1024
 #define ELEM (size_t)(X*Y*Z)
 #define STEP 32
-#define GPUNUM 2
+#define GPUNUM 4 
 #define SLV (1*X*Y)
 
 using namespace std;
