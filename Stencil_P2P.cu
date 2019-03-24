@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <omp.h>
 #include <utility>	//C++11
+#include "time/seconds.h"
 
 #define BLOCK 32
 #define X 32
@@ -214,6 +215,8 @@ int main(int argc,char** argv){
 	//P2P
 	isCapableP2P(GPUNUM);
 	enableP2P(GPUNUM);
+	double start,end;
+	start = seconds()
 
 	#pragma omp parallel
 	{
@@ -289,12 +292,25 @@ int main(int argc,char** argv){
 		CHECK(cudaFree(d_Src[Dev]));
 		CHECK(cudaFree(d_Dst[Dev]));
 	}
+	end = seconds()
+
 	disableP2P(GPUNUM);
 
 	cout << "GPU Calc Finished." << endl;
 	Host3DStencil(Src,Dst);
 	cout << "CPU Calc Finished." << endl;
 	checkResult(Src,Rst,ELEM);
+
+	int elements = ELEM;
+	int gpus = GPUNUM;
+	int steps = STEPS;
+	printf("------------------------------------------------\n");
+	printf("Program : %s\n", argv[0]);
+	printf("STEPS : %d\n", steps);
+	printf("GPU : %d | ELEMENTS : %d  \n",gpus,elements );
+	printf("Elapsed Time : %lf\n",end-start);
+	printf("------------------------------------------------\n");
+
 
 //	print(Def,Src,Rst,ELEM);
 	delete Src;

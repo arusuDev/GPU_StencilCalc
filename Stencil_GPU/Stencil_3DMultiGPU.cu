@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <omp.h>
 #include <utility>	//C++11
+#include "../time/seconds.h"
 
 #define BLOCK 32
 #define X 32
@@ -134,6 +135,8 @@ int main(int argc,char** argv){
 	//HostTemp SLV
 	float* Left = new float[SLV*GPUNUM];
 	float* Right = new float[SLV*GPUNUM];
+	double start,end;
+	start = seconds()
 
 	omp_set_num_threads(GPUNUM);
 
@@ -209,8 +212,20 @@ int main(int argc,char** argv){
 		CHECK(cudaFree(d_Src));
 		CHECK(cudaFree(d_Dst));
 	}
+	end = seconds()
+
 	Host3DStencil(Src,Dst);
 	checkResult(Src,Rst,ELEM);
+
+	int elements = ELEM;
+	int gpus = GPUNUM;
+	int steps = STEPS;
+	printf("------------------------------------------------\n");
+	printf("STEPS : %d\n", steps);
+	printf("GPU : %d | ELEMENTS : %d  \n",gpus,elements );
+	printf("Elapsed Time : %lf\n",end-start);
+	printf("------------------------------------------------\n");
+
 
 //	print(Def,Src,Rst,ELEM);
 	delete Src;

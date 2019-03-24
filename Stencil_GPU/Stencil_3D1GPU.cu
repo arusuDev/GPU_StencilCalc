@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <utility>	//C++11
+#include "../time/seconds.h"
 
 #define BLOCK 32
 
@@ -113,9 +114,10 @@ int main(int argc,char** argv){
 	memcpy(Dst,Src,sizeof(float)*ELEM);
 	memcpy(Def,Src,sizeof(float)*ELEM);
 	//Deviceメモリの確保
-	
 	size_t DeviceMemorySize = ELEM*sizeof(float);
 	float *d_Src,*d_Dst;
+	double start,end;
+	start = seconds()
 	CHECK(cudaSetDevice(0));
 	CHECK(cudaMalloc(&d_Src,DeviceMemorySize));
 	CHECK(cudaMalloc(&d_Dst,DeviceMemorySize));
@@ -135,13 +137,17 @@ int main(int argc,char** argv){
 	CHECK(cudaGetLastError());
 
 	CHECK(cudaMemcpy(Rst,d_Src,DeviceMemorySize,cudaMemcpyDeviceToHost));
+	end = seconds()
 	CHECK(cudaFree(d_Src));
 	CHECK(cudaFree(d_Dst));
 	Host3DStencil(Src,Dst);
-//	print(Src);
-	checkResult(Src,Rst,ELEM);
+	int elements = ELEM;
+	printf("------------------------------------------------\n");
+	printf("GPU : 1 | ELEMENTS : %d  \n",elements );
+	printf("Elapsed Time : %lf\n",end-start);
+	printf("------------------------------------------------\n");
 
-//	print(Def,Src,Rst,ELEM);
+	checkResult(Src,Rst,ELEM);
 	delete Src;
 	delete Dst;
 	delete Rst;
