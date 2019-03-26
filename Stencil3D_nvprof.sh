@@ -32,9 +32,9 @@ for size in 128 512 1024
 do
 	for step in 128 1024
 	do
-		./Binary/Stencil_3D1GPU_${size}_${step}
-		./Binary/Stencil_3DMultiGPU_${size}_${step}
-		./Binary/Stencil_P2P_${size}_${step}
+		nvprof ./Binary/Stencil_3D1GPU_${size}_${step}
+		nvprof ./Binary/Stencil_3DMultiGPU_${size}_${step}
+		nvprof ./Binary/Stencil_P2P_${size}_${step}
 	done
 done
 cat $PE_HOSTFILE
