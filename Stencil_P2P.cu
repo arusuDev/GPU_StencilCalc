@@ -7,12 +7,12 @@
 #include "time/seconds.h"
 
 #define BLOCK 32
-#define X 32
-#define Y 32
-#define Z 32
+#define X 128
+#define Y 128
+#define Z 128
 #define ELEM (size_t)(X*Y*Z)
-#define STEP 32
-#define GPUNUM 2
+#define STEP 128 
+#define GPUNUM 4
 #define SLV (1*X*Y)
 
 using namespace std;
@@ -39,8 +39,8 @@ inline bool isCapableP2P(int ngpus)
 
         if (prop[i].major >= 2) iCount++;
 
-        printf("> GPU%d: %s %s capable of Peer-to-Peer access\n", i,
-               prop[i].name, (prop[i].major >= 2 ? "is" : "not"));
+        //printf("> GPU%d: %s %s capable of Peer-to-Peer access\n", i,
+               //prop[i].name, (prop[i].major >= 2 ? "is" : "not"));
     }
 
     if(iCount != ngpus)
@@ -67,7 +67,7 @@ inline void enableP2P (int ngpus)
             if (peer_access_available)
             {
                 CHECK(cudaDeviceEnablePeerAccess(j, 0));
-                printf("> GPU%d enabled direct access to GPU%d\n", i, j);
+                //printf("> GPU%d enabled direct access to GPU%d\n", i, j);
             }
             else
             {
@@ -93,7 +93,7 @@ inline void disableP2P (int ngpus)
             if( peer_access_available )
             {
                 CHECK(cudaDeviceDisablePeerAccess(j));
-                printf("> GPU%d disabled direct access to GPU%d\n", i, j);
+                //printf("> GPU%d disabled direct access to GPU%d\n", i, j);
             }
         }
     }
@@ -140,24 +140,24 @@ void initializeData(float* A,const int size){
   return;
 }
 void print(float* Src){
-	for(int i=0;i<ELEM;i++){
+	for(size_t i=0;i<ELEM;i++){
 		cout << Src[i] << " ";
 		if((i+1)%X==0)
 			cout << endl;
 	}
 }
 void print(float* Def,float* Src,float* Rst,const int elem){
-	for(int i=0;i<elem;i++){
+	for(size_t i=0;i<elem;i++){
 		cout << "\t" <<i << " | " << Def[i] << " | " <<Src[i] << " | "<<Rst[i] << endl;
 	}
 }
 
 void Host3DStencil(float* Src,float* Dst){
 	for(int time_step=0;time_step<STEP;time_step++){
-		for(int all_loop=0;all_loop<ELEM;all_loop++){
-			int mat_x = all_loop%X;
-			int mat_y = all_loop/X;
-			int mat_z = all_loop/(X*Y);
+		for(size_t all_loop=0;all_loop<ELEM;all_loop++){
+			size_t mat_x = all_loop%X;
+			size_t mat_y = all_loop/X;
+			size_t mat_z = all_loop/(X*Y);
 
 			if(mat_x!=0 && mat_x!=X-1 && mat_y!=0 && mat_y!= Y-1 && mat_z!=0 && mat_z!=Z-1){
 				Dst[all_loop] = 0.4*Src[all_loop] + 0.1*(Src[all_loop-1]+Src[all_loop+1]+Src[all_loop-X]+Src[all_loop+X]+Src[all_loop-X*Y]+Src[all_loop+X*Y]);
@@ -202,8 +202,8 @@ int main(int argc,char** argv){
 	//Srcを乱数で初期化
 	initializeData(Src,ELEM);
 
-	memcpy(Dst,Src,sizeof(float)*ELEM);
-	memcpy(Def,Src,sizeof(float)*ELEM);
+	memcpy(Dst,Src,(size_t)sizeof(float)*ELEM);
+	memcpy(Def,Src,(size_t)sizeof(float)*ELEM);
 	//HostTemp SLV
 	float* Left = new float[SLV*GPUNUM];
 	float* Right = new float[SLV*GPUNUM];
@@ -216,7 +216,7 @@ int main(int argc,char** argv){
 	isCapableP2P(GPUNUM);
 	enableP2P(GPUNUM);
 	double start,end;
-	start = seconds()
+	start = seconds();
 
 	#pragma omp parallel
 	{
@@ -230,7 +230,8 @@ int main(int argc,char** argv){
 		int Dev = omp_get_thread_num();
 		CHECK(cudaSetDevice(Dev));
 		
-		 cout << Dev << " : MainElem -> " <<MainElem << " : CalcElem -> " <<CalcElem << " : SLV -> " << SLV << endl;
+		 //cout << Dev << " : MainElem -> " <<MainElem << " : CalcElem -> " <<CalcElem << " : SLV -> " << SLV << endl;
+
 		//実行定義
 		dim3 block(BLOCK);
 		dim3 grid((CalcElem+block.x-1)/block.x);
@@ -238,7 +239,7 @@ int main(int argc,char** argv){
 		//開始のアドレス(要素番号)
 		size_t MainAddress = Dev*MainElem;
 
-		cout << Dev << " : StartAddress -> " << MainAddress << endl;
+		//cout << Dev << " : StartAddress -> " << MainAddress << endl;
 
 //		float *d_Src,*d_Dst;
 		CHECK(cudaMalloc(&d_Src[Dev],DeviceMemorySize));
@@ -292,22 +293,20 @@ int main(int argc,char** argv){
 		CHECK(cudaFree(d_Src[Dev]));
 		CHECK(cudaFree(d_Dst[Dev]));
 	}
-	end = seconds()
+	end = seconds();
 
 	disableP2P(GPUNUM);
 
-	cout << "GPU Calc Finished." << endl;
-	Host3DStencil(Src,Dst);
-	cout << "CPU Calc Finished." << endl;
-	checkResult(Src,Rst,ELEM);
+	//cout << "GPU Calc Finished." << endl;
 
-	int elements = ELEM;
-	int gpus = GPUNUM;
-	int steps = STEPS;
+	//Host3DStencil(Src,Dst);
+	//cout << "CPU Calc Finished." << endl;
+	//checkResult(Src,Rst,ELEM);
+
 	printf("------------------------------------------------\n");
 	printf("Program : %s\n", argv[0]);
-	printf("STEPS : %d\n", steps);
-	printf("GPU : %d | ELEMENTS : %d  \n",gpus,elements );
+	printf("STEPS : %d X:%d Y:%d Z:%d \n", STEP,X,Y,Z);
+	printf("GPU : %d | ELEMENTS : %d  \n",GPUNUM,ELEM );
 	printf("Elapsed Time : %lf\n",end-start);
 	printf("------------------------------------------------\n");
 

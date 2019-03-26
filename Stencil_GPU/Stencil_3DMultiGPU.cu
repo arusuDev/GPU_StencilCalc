@@ -7,12 +7,12 @@
 #include "../time/seconds.h"
 
 #define BLOCK 32
-#define X 32
-#define Y 32
-#define Z 32
+#define X 128
+#define Y 128
+#define Z 128
 #define ELEM (size_t)(X*Y*Z)
-#define STEP 128
-#define GPUNUM 2
+#define STEP 1024
+#define GPUNUM 4
 #define SLV (1*X*Y)
 
 using namespace std;
@@ -136,7 +136,7 @@ int main(int argc,char** argv){
 	float* Left = new float[SLV*GPUNUM];
 	float* Right = new float[SLV*GPUNUM];
 	double start,end;
-	start = seconds()
+	start = seconds();
 
 	omp_set_num_threads(GPUNUM);
 
@@ -152,7 +152,7 @@ int main(int argc,char** argv){
 		int Dev = omp_get_thread_num();
 		CHECK(cudaSetDevice(Dev));
 		
-		 cout << Dev << " : MainElem -> " <<MainElem << " : CalcElem -> " <<CalcElem << " : SLV -> " << SLV << endl;
+		 //cout << Dev << " : MainElem -> " <<MainElem << " : CalcElem -> " <<CalcElem << " : SLV -> " << SLV << endl;
 		//実行定義
 		dim3 block(BLOCK);
 		dim3 grid((CalcElem+block.x-1)/block.x);
@@ -160,7 +160,7 @@ int main(int argc,char** argv){
 		//開始のアドレス(要素番号)
 		size_t MainAddress = Dev*MainElem;
 
-		 cout << Dev << " : StartAddress -> " << MainAddress << endl;
+		// cout << Dev << " : StartAddress -> " << MainAddress << endl;
 
 		float *d_Src,*d_Dst;
 		CHECK(cudaMalloc(&d_Src,DeviceMemorySize));
@@ -212,17 +212,15 @@ int main(int argc,char** argv){
 		CHECK(cudaFree(d_Src));
 		CHECK(cudaFree(d_Dst));
 	}
-	end = seconds()
+	end = seconds();
 
-	Host3DStencil(Src,Dst);
-	checkResult(Src,Rst,ELEM);
+	//Host3DStencil(Src,Dst);
+	//checkResult(Src,Rst,ELEM);
 
-	int elements = ELEM;
-	int gpus = GPUNUM;
-	int steps = STEPS;
 	printf("------------------------------------------------\n");
-	printf("STEPS : %d\n", steps);
-	printf("GPU : %d | ELEMENTS : %d  \n",gpus,elements );
+	printf("Program : %s\n ",argv[0]);
+	printf("STEPS : %d\n X:%d Y:%d Z:%d", STEP,X,Y,Z);
+	printf("GPU : %d | ELEMENTS : %d  \n",GPUNUM,ELEM);
 	printf("Elapsed Time : %lf\n",end-start);
 	printf("------------------------------------------------\n");
 
