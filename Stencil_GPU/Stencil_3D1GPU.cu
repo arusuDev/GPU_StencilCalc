@@ -3,15 +3,16 @@
 #include <cstring>
 #include <cstdlib>
 #include <utility>	//C++11
+#include "../time/seconds.h"
 
 #define BLOCK 32
 
-#define X 32
-#define Y 32
-#define Z 32
+#define X 128 
+#define Y 128
+#define Z 128
 
 #define ELEM (size_t)(X*Y*Z)
-#define STEP 128
+#define STEP 1024
 using namespace std;
 
 #define CHECK(call)										\
@@ -113,9 +114,10 @@ int main(int argc,char** argv){
 	memcpy(Dst,Src,sizeof(float)*ELEM);
 	memcpy(Def,Src,sizeof(float)*ELEM);
 	//Deviceメモリの確保
-	
 	size_t DeviceMemorySize = ELEM*sizeof(float);
 	float *d_Src,*d_Dst;
+	double start,end;
+	start = seconds();
 	CHECK(cudaSetDevice(0));
 	CHECK(cudaMalloc(&d_Src,DeviceMemorySize));
 	CHECK(cudaMalloc(&d_Dst,DeviceMemorySize));
@@ -126,7 +128,7 @@ int main(int argc,char** argv){
 	dim3 block(BLOCK);
 	dim3 grid((ELEM+block.x-1)/block.x);
 
-	cout << "block : "<< block.x << " | grid : " << grid.x << endl;
+	//cout << "block : "<< block.x << " | grid : " << grid.x << endl;
 
 	for(int st=0;st<STEP;st++){
 		StencilOneStep<<<grid,block>>>(d_Src,d_Dst);
@@ -135,13 +137,18 @@ int main(int argc,char** argv){
 	CHECK(cudaGetLastError());
 
 	CHECK(cudaMemcpy(Rst,d_Src,DeviceMemorySize,cudaMemcpyDeviceToHost));
+	end = seconds();
 	CHECK(cudaFree(d_Src));
 	CHECK(cudaFree(d_Dst));
-	Host3DStencil(Src,Dst);
-//	print(Src);
-	checkResult(Src,Rst,ELEM);
+	//Host3DStencil(Src,Dst);
+	printf("------------------------------------------------\n");
+	printf("Program : %s\n",argv[0]);
+	printf("STEPS : %d X:%d Y:%d Z:%d \n",STEP,X,Y,Z);
+	printf("GPU : 1 | ELEMENTS : %d  \n",ELEM );
+	printf("Elapsed Time : %lf\n",end-start);
+	printf("------------------------------------------------\n");
 
-//	print(Def,Src,Rst,ELEM);
+	//checkResult(Src,Rst,ELEM);
 	delete Src;
 	delete Dst;
 	delete Rst;

@@ -1,0 +1,538 @@
++ . /etc/profile.d/modules.sh
+++ trap '' 1 2 3
+++ case "$0" in
+++ . /usr/share/Modules/3.2.10/init/sh
++++ '[' '' = '' ']'
++++ MODULE_VERSION_STACK=3.2.10
++++ MODULE_VERSION=3.2.10
++++ export MODULE_VERSION
++++ export MODULE_VERSION_STACK
++++ MODULESHOME=/usr/share/Modules/3.2.10
++++ export MODULESHOME
++++ '[' '' = '' ']'
++++ LOADEDMODULES=
++++ export LOADEDMODULES
++++ '[' '' = '' ']'
+++++ sed -n 's/[ 	#].*$//; /./H; $ { x; s/^\n//; s/\n/:/g; p; }' /usr/share/Modules/3.2.10/init/.modulespath
++++ MODULEPATH=/apps/t3/sles12sp2/modules/modulefiles/compiler:/apps/t3/sles12sp2/modules/modulefiles/mpi:/apps/t3/sles12sp2/modules/modulefiles/tools:/apps/t3/sles12sp2/modules/modulefiles/isv:/apps/t3/sles12sp2/modules/modulefiles/free:/apps/t3/sles12sp2/modules/modulefiles/gsic:/apps/t3/sles12sp2/modules/modulefiles/hpci-apps
++++ export MODULEPATH
+++ trap 1 2 3
++ module purge
+++ /usr/share/Modules/3.2.10/bin/modulecmd sh purge
++ eval
++ module load cuda openmpi
+++ /usr/share/Modules/3.2.10/bin/modulecmd sh load cuda openmpi
++ eval CPATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/include ';export' 'CPATH;CUDA_HOME=/apps/t3/sles12sp2/cuda/8.0.61' ';export' 'CUDA_HOME;CUDA_PATH=/apps/t3/sles12sp2/cuda/8.0.61' ';export' 'CUDA_PATH;CUDA_TOP=/apps/t3/sles12sp2/cuda/8.0.61' ';export' 'CUDA_TOP;C_INCLUDE_PATH=/apps/t3/sles12sp2/cuda/8.0.61/include' ';export' 'C_INCLUDE_PATH;LD_LIBRARY_PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/lib:/apps/t3/sles12sp2/cuda/8.0.61/extras/CUPTI/lib64:/apps/t3/sles12sp2/cuda/8.0.61/lib64' ';export' 'LD_LIBRARY_PATH;LIBRARY_PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/lib:/apps/t3/sles12sp2/cuda/8.0.61/extras/CUPTI/lib64:/apps/t3/sles12sp2/cuda/8.0.61/lib64' ';export' 'LIBRARY_PATH;LOADEDMODULES=cuda/8.0.61:openmpi/2.1.2' ';export' 'LOADEDMODULES;MANPATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/share/man:/apps/t3/sles12sp2/cuda/8.0.61/doc/man/:/usr/share/man' ';export' 'MANPATH;MPICC=mpicc' ';export' 'MPICC;MPICXX=mpicxx' ';export' 'MPICXX;MPIFC=mpif90' ';export' 'MPIFC;MPI_ROOT=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu' ';export' 'MPI_ROOT;PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/bin:/apps/t3/sles12sp2/cuda/8.0.61/bin:/scr/4419284.1.all.q:/usr/local/bin:/bin:/usr/bin' ';export' 'PATH;_LMFILES_=/apps/t3/sles12sp2/modules/modulefiles/compiler/cuda/8.0.61:/apps/t3/sles12sp2/modules/modulefiles/mpi/openmpi/2.1.2' ';export' '_LMFILES_;'
+++ CPATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/include
+++ export CPATH
+++ CUDA_HOME=/apps/t3/sles12sp2/cuda/8.0.61
+++ export CUDA_HOME
+++ CUDA_PATH=/apps/t3/sles12sp2/cuda/8.0.61
+++ export CUDA_PATH
+++ CUDA_TOP=/apps/t3/sles12sp2/cuda/8.0.61
+++ export CUDA_TOP
+++ C_INCLUDE_PATH=/apps/t3/sles12sp2/cuda/8.0.61/include
+++ export C_INCLUDE_PATH
+++ LD_LIBRARY_PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/lib:/apps/t3/sles12sp2/cuda/8.0.61/extras/CUPTI/lib64:/apps/t3/sles12sp2/cuda/8.0.61/lib64
+++ export LD_LIBRARY_PATH
+++ LIBRARY_PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/lib:/apps/t3/sles12sp2/cuda/8.0.61/extras/CUPTI/lib64:/apps/t3/sles12sp2/cuda/8.0.61/lib64
+++ export LIBRARY_PATH
+++ LOADEDMODULES=cuda/8.0.61:openmpi/2.1.2
+++ export LOADEDMODULES
+++ MANPATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/share/man:/apps/t3/sles12sp2/cuda/8.0.61/doc/man/:/usr/share/man
+++ export MANPATH
+++ MPICC=mpicc
+++ export MPICC
+++ MPICXX=mpicxx
+++ export MPICXX
+++ MPIFC=mpif90
+++ export MPIFC
+++ MPI_ROOT=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu
+++ export MPI_ROOT
+++ PATH=/apps/t3/sles12sp2/free/openmpi/2.1.2/gnu/bin:/apps/t3/sles12sp2/cuda/8.0.61/bin:/scr/4419284.1.all.q:/usr/local/bin:/bin:/usr/bin
+++ export PATH
+++ _LMFILES_=/apps/t3/sles12sp2/modules/modulefiles/compiler/cuda/8.0.61:/apps/t3/sles12sp2/modules/modulefiles/mpi/openmpi/2.1.2
+++ export _LMFILES_
++ module list
+++ /usr/share/Modules/3.2.10/bin/modulecmd sh list
+Currently Loaded Modulefiles:
+  1) cuda/8.0.61     2) openmpi/2.1.2
++ eval
++ cat /var/spool/uge/r1i7n7/active_jobs/4419284.1/pe_hostfile
++ awk '{print $1}'
++ echo /scr/4419284.1.all.q/machines
++ pwd
++ for size in 128 512 1024
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_128_128
+==41608== NVPROF is profiling process 41608, command: ./Binary/Stencil_3D1GPU_128_128
+==41608== Profiling application: ./Binary/Stencil_3D1GPU_128_128
+==41608== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 78.25%  14.234ms       128  111.20us  110.91us  112.51us  StencilOneStep(float*, float*)
+ 12.38%  2.2513ms         1  2.2513ms  2.2513ms  2.2513ms  [CUDA memcpy DtoH]
+  9.37%  1.7053ms         2  852.64us  724.11us  981.17us  [CUDA memcpy HtoD]
+
+==41608== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 93.51%  329.59ms         2  164.79ms  249.30us  329.34ms  cudaMalloc
+  5.03%  17.733ms         3  5.9109ms  795.28us  15.890ms  cudaMemcpy
+  0.74%  2.6154ms       364  7.1850us     137ns  273.37us  cuDeviceGetAttribute
+  0.29%  1.0205ms         4  255.12us  251.54us  260.20us  cuDeviceTotalMem
+  0.22%  767.83us       128  5.9980us  5.4590us  32.048us  cudaLaunch
+  0.12%  419.16us         2  209.58us  187.37us  231.79us  cudaFree
+  0.06%  225.28us         4  56.318us  54.426us  57.966us  cuDeviceGetName
+  0.01%  44.305us       256     173ns     152ns     859ns  cudaSetupArgument
+  0.01%  26.525us       128     207ns     189ns  1.3760us  cudaConfigureCall
+  0.00%  11.451us         1  11.451us  11.451us  11.451us  cudaSetDevice
+  0.00%  3.0690us        12     255ns     138ns     472ns  cuDeviceGet
+  0.00%  2.1120us         3     704ns     216ns  1.5510us  cuDeviceGetCount
+  0.00%     393ns         1     393ns     393ns     393ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_128_128
+==41619== NVPROF is profiling process 41619, command: ./Binary/Stencil_3DMultiGPU_128_128
+==41619== Profiling application: ./Binary/Stencil_3DMultiGPU_128_128
+==41619== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 53.45%  15.976ms       512  31.203us  30.657us  32.640us  StencilOneStep(float*, float*, int, int)
+ 27.38%  8.1835ms       776  10.545us  7.8400us  263.91us  [CUDA memcpy HtoD]
+ 19.14%  5.7196ms       772  7.4080us  5.6640us  290.88us  [CUDA memcpy DtoH]
+  0.03%  8.3840us         8  1.0480us  1.0240us  1.0880us  [CUDA memset]
+
+==41619== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 98.29%  4.69738s         8  587.17ms  254.19us  1.19938s  cudaMalloc
+  1.39%  66.502ms      1548  42.959us  15.962us  1.0336ms  cudaMemcpy
+  0.12%  5.5329ms         8  691.61us  566.84us  778.27us  cudaFree
+  0.10%  4.8194ms       512  9.4120us  8.0060us  36.465us  cudaLaunch
+  0.05%  2.6255ms       364  7.2120us     140ns  275.07us  cuDeviceGetAttribute
+  0.02%  1.0123ms         4  253.06us  250.76us  254.35us  cuDeviceTotalMem
+  0.01%  484.78us      2048     236ns     149ns  9.9140us  cudaSetupArgument
+  0.00%  225.81us         4  56.452us  54.235us  58.786us  cuDeviceGetName
+  0.00%  199.95us       512     390ns     225ns  1.8750us  cudaConfigureCall
+  0.00%  171.62us         8  21.451us  9.9990us  38.431us  cudaMemset
+  0.00%  27.447us         4  6.8610us  5.0180us  11.213us  cudaSetDevice
+  0.00%  3.1650us        12     263ns     139ns     472ns  cuDeviceGet
+  0.00%  2.2860us         4     571ns     426ns     718ns  cudaGetLastError
+  0.00%  1.8550us         3     618ns     156ns  1.1790us  cuDeviceGetCount
++ nvprof ./Binary/Stencil_P2P_128_128
+==41637== NVPROF is profiling process 41637, command: ./Binary/Stencil_P2P_128_128
+==41637== Profiling application: ./Binary/Stencil_P2P_128_128
+==41637== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 70.88%  15.974ms       512  31.198us  30.656us  33.024us  StencilOneStep(float*, float*, int, int)
+ 16.57%  3.7335ms       768  4.8610us  4.6080us  6.3680us  [CUDA memcpy PtoP]
+  7.53%  1.6963ms         8  212.04us  188.68us  243.94us  [CUDA memcpy HtoD]
+  4.99%  1.1254ms         4  281.35us  273.38us  290.11us  [CUDA memcpy DtoH]
+  0.04%  8.8650us         8  1.1080us     993ns  1.2800us  [CUDA memset]
+
+==41637== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 94.36%  1.54644s        12  128.87ms  1.2880us  691.96ms  cudaDeviceEnablePeerAccess
+  1.73%  28.305ms       780  36.288us  11.390us  1.0175ms  cudaMemcpy
+  1.25%  20.438ms       512  39.917us  4.7560us  95.161us  cudaDeviceSynchronize
+  1.15%  18.783ms         8  2.3479ms  1.4903ms  3.3120ms  cudaMalloc
+  0.78%  12.744ms         8  1.5930ms  797.03us  2.0974ms  cudaFree
+  0.28%  4.6143ms       512  9.0120us  7.4580us  19.588us  cudaLaunch
+  0.16%  2.6343ms       364  7.2370us     138ns  281.91us  cuDeviceGetAttribute
+  0.16%  2.5462ms         4  636.54us  625.83us  647.66us  cudaGetDeviceProperties
+  0.06%  1.0234ms         4  255.84us  252.73us  261.67us  cuDeviceTotalMem
+  0.03%  571.55us      2048     279ns     150ns  1.4670us  cudaSetupArgument
+  0.02%  304.96us         8  38.119us  10.620us  163.10us  cudaMemset
+  0.01%  232.05us         4  58.011us  55.046us  64.332us  cuDeviceGetName
+  0.01%  212.25us       512     414ns     218ns  1.5980us  cudaConfigureCall
+  0.00%  36.578us        12  3.0480us     459ns  7.1770us  cudaSetDevice
+  0.00%  18.782us        24     782ns     422ns  2.1360us  cudaDeviceCanAccessPeer
+  0.00%  15.651us        12  1.3040us     983ns  3.9280us  cudaDeviceDisablePeerAccess
+  0.00%  5.0800us        12     423ns     137ns  1.9440us  cuDeviceGet
+  0.00%  2.3940us         3     798ns     183ns  1.8260us  cuDeviceGetCount
+  0.00%  1.7350us         4     433ns     369ns     561ns  cudaGetLastError
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_128_1024
+==41654== NVPROF is profiling process 41654, command: ./Binary/Stencil_3D1GPU_128_1024
+==41654== Profiling application: ./Binary/Stencil_3D1GPU_128_1024
+==41654== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 96.59%  114.20ms      1024  111.53us  110.91us  112.90us  StencilOneStep(float*, float*)
+  1.96%  2.3132ms         1  2.3132ms  2.3132ms  2.3132ms  [CUDA memcpy DtoH]
+  1.45%  1.7169ms         2  858.44us  742.47us  974.41us  [CUDA memcpy HtoD]
+
+==41654== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 72.95%  331.86ms         2  165.93ms  242.18us  331.62ms  cudaMalloc
+ 24.70%  112.35ms         3  37.451ms  812.18us  110.50ms  cudaMemcpy
+  1.29%  5.8897ms      1024  5.7510us  5.3760us  32.444us  cudaLaunch
+  0.58%  2.6262ms       364  7.2140us     141ns  295.10us  cuDeviceGetAttribute
+  0.22%  1.0136ms         4  253.39us  251.47us  254.49us  cuDeviceTotalMem
+  0.09%  424.49us         2  212.24us  188.90us  235.58us  cudaFree
+  0.07%  338.02us      2048     165ns     151ns     769ns  cudaSetupArgument
+  0.05%  224.56us         4  56.140us  54.236us  57.592us  cuDeviceGetName
+  0.04%  187.59us      1024     183ns     174ns  1.3180us  cudaConfigureCall
+  0.00%  11.613us         1  11.613us  11.613us  11.613us  cudaSetDevice
+  0.00%  3.1860us        12     265ns     137ns     496ns  cuDeviceGet
+  0.00%  2.1360us         3     712ns     174ns  1.5970us  cuDeviceGetCount
+  0.00%     371ns         1     371ns     371ns     371ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_128_1024
+==41666== NVPROF is profiling process 41666, command: ./Binary/Stencil_3DMultiGPU_128_1024
+==41666== Profiling application: ./Binary/Stencil_3DMultiGPU_128_1024
+==41666== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 57.86%  125.04ms      4096  30.528us  27.968us  32.704us  StencilOneStep(float*, float*, int, int)
+ 24.70%  53.380ms      6152  8.6760us  7.2320us  259.14us  [CUDA memcpy HtoD]
+ 17.43%  37.668ms      6148  6.1260us  5.6320us  294.02us  [CUDA memcpy DtoH]
+  0.00%  8.4170us         8  1.0520us  1.0240us  1.0890us  [CUDA memset]
+
+==41666== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 90.24%  4.69254s         8  586.57ms  256.50us  1.20224s  cudaMalloc
+  8.73%  453.78ms     12300  36.893us  15.878us  1.0274ms  cudaMemcpy
+  0.72%  37.407ms      4096  9.1320us  8.1880us  20.250us  cudaLaunch
+  0.11%  5.5706ms         8  696.32us  576.22us  791.31us  cudaFree
+  0.08%  3.9110ms     16384     238ns     148ns  4.6440us  cudaSetupArgument
+  0.05%  2.6089ms       364  7.1670us     136ns  274.75us  cuDeviceGetAttribute
+  0.05%  2.5128ms      4096     613ns     229ns  503.70us  cudaConfigureCall
+  0.02%  1.0234ms         4  255.85us  251.85us  261.08us  cuDeviceTotalMem
+  0.00%  237.08us         4  59.270us  54.813us  70.227us  cuDeviceGetName
+  0.00%  173.41us         8  21.676us  10.210us  37.022us  cudaMemset
+  0.00%  24.704us         4  6.1760us  4.6400us  8.7050us  cudaSetDevice
+  0.00%  3.6200us        12     301ns     136ns     521ns  cuDeviceGet
+  0.00%  2.8660us         3     955ns     159ns  1.4010us  cuDeviceGetCount
+  0.00%  2.3220us         4     580ns     407ns     939ns  cudaGetLastError
++ nvprof ./Binary/Stencil_P2P_128_1024
+======== Error: application not found.
++ for size in 128 512 1024
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_512_128
+==41687== NVPROF is profiling process 41687, command: ./Binary/Stencil_3D1GPU_512_128
+==41687== Profiling application: ./Binary/Stencil_3D1GPU_512_128
+==41687== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 74.07%  856.19ms       128  6.6890ms  6.5807ms  7.1865ms  StencilOneStep(float*, float*)
+ 15.37%  177.70ms         1  177.70ms  177.70ms  177.70ms  [CUDA memcpy DtoH]
+ 10.56%  122.05ms         2  61.027ms  60.927ms  61.127ms  [CUDA memcpy HtoD]
+
+==41687== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 75.19%  1.15546s         3  385.15ms  61.044ms  1.03322s  cudaMemcpy
+ 24.41%  375.14ms         2  187.57ms  713.93us  374.42ms  cudaMalloc
+  0.17%  2.6031ms       364  7.1510us     139ns  272.26us  cuDeviceGetAttribute
+  0.09%  1.3744ms         2  687.22us  635.71us  738.73us  cudaFree
+  0.07%  1.0148ms         4  253.69us  251.41us  254.70us  cuDeviceTotalMem
+  0.05%  804.16us       128  6.2820us  5.5370us  46.290us  cudaLaunch
+  0.02%  243.43us         4  60.856us  54.191us  73.842us  cuDeviceGetName
+  0.00%  45.586us       256     178ns     158ns     771ns  cudaSetupArgument
+  0.00%  26.979us       128     210ns     174ns  2.8430us  cudaConfigureCall
+  0.00%  15.249us         1  15.249us  15.249us  15.249us  cudaSetDevice
+  0.00%  3.2240us        12     268ns     140ns     488ns  cuDeviceGet
+  0.00%  2.2710us         3     757ns     162ns  1.7600us  cuDeviceGetCount
+  0.00%     751ns         1     751ns     751ns     751ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_512_128
+==41698== NVPROF is profiling process 41698, command: ./Binary/Stencil_3DMultiGPU_512_128
+==41698== Profiling application: ./Binary/Stencil_3DMultiGPU_512_128
+==41698== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 62.88%  885.87ms       512  1.7302ms  1.6615ms  1.8393ms  StencilOneStep(float*, float*, int, int)
+ 18.76%  264.26ms       776  340.54us  91.169us  24.392ms  [CUDA memcpy HtoD]
+ 18.36%  258.71ms       772  335.11us  79.489us  53.008ms  [CUDA memcpy DtoH]
+  0.00%  10.048us         8  1.2560us     992ns  1.9200us  [CUDA memset]
+
+==41698== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 75.87%  5.20139s         8  650.17ms  368.23us  1.32885s  cudaMalloc
+ 23.91%  1.63933s      1548  1.0590ms  140.09us  53.417ms  cudaMemcpy
+  0.09%  5.8484ms       512  11.422us  9.6650us  45.653us  cudaLaunch
+  0.06%  4.1795ms         8  522.44us  322.05us  693.87us  cudaFree
+  0.04%  2.6187ms       364  7.1940us     170ns  273.74us  cuDeviceGetAttribute
+  0.01%  1.0197ms         4  254.92us  251.96us  258.41us  cuDeviceTotalMem
+  0.01%  477.10us      2048     232ns     153ns  1.9260us  cudaSetupArgument
+  0.00%  245.62us       512     479ns     319ns  2.8030us  cudaConfigureCall
+  0.00%  224.97us         4  56.242us  54.223us  59.845us  cuDeviceGetName
+  0.00%  184.32us         8  23.039us  10.494us  41.221us  cudaMemset
+  0.00%  22.091us         4  5.5220us  5.1250us  6.3090us  cudaSetDevice
+  0.00%  3.3290us        12     277ns     167ns     473ns  cuDeviceGet
+  0.00%  2.6820us         4     670ns     635ns     719ns  cudaGetLastError
+  0.00%  2.1370us         3     712ns     173ns  1.4800us  cuDeviceGetCount
++ nvprof ./Binary/Stencil_P2P_512_128
+==41716== NVPROF is profiling process 41716, command: ./Binary/Stencil_P2P_512_128
+==41716== Profiling application: ./Binary/Stencil_P2P_512_128
+==41716== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 67.89%  860.04ms       512  1.6798ms  1.6618ms  1.6957ms  StencilOneStep(float*, float*, int, int)
+ 15.61%  197.70ms         4  49.425ms  45.263ms  53.464ms  [CUDA memcpy DtoH]
+ 13.00%  164.71ms         8  20.589ms  19.251ms  21.542ms  [CUDA memcpy HtoD]
+  3.51%  44.410ms       768  57.825us  57.696us  58.689us  [CUDA memcpy PtoP]
+  0.00%  9.3440us         8  1.1680us     992ns  1.5680us  [CUDA memset]
+
+==41716== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 49.78%  1.55252s        12  129.38ms  1.4770us  733.58ms  cudaDeviceEnablePeerAccess
+ 30.75%  959.17ms       512  1.8734ms  1.7504ms  1.9564ms  cudaDeviceSynchronize
+ 12.52%  390.51ms       780  500.66us  11.022us  53.747ms  cudaMemcpy
+  5.46%  170.29ms         8  21.286ms  2.0842ms  86.613ms  cudaMalloc
+  1.05%  32.675ms         8  4.0843ms  2.1994ms  9.2498ms  cudaFree
+  0.19%  5.9045ms       512  11.532us  7.6840us  305.16us  cudaLaunch
+  0.09%  2.6703ms       364  7.3350us     148ns  282.64us  cuDeviceGetAttribute
+  0.08%  2.5489ms         4  637.23us  622.96us  650.39us  cudaGetDeviceProperties
+  0.03%  1.0243ms         4  256.07us  252.44us  262.99us  cuDeviceTotalMem
+  0.02%  597.96us      2048     291ns     154ns  1.8020us  cudaSetupArgument
+  0.01%  456.85us         8  57.105us  11.513us  259.57us  cudaMemset
+  0.01%  235.14us         4  58.785us  56.371us  62.444us  cuDeviceGetName
+  0.01%  233.44us       512     455ns     241ns  3.9610us  cudaConfigureCall
+  0.00%  54.974us        12  4.5810us     533ns  17.246us  cudaSetDevice
+  0.00%  19.860us        24     827ns     465ns  2.4810us  cudaDeviceCanAccessPeer
+  0.00%  17.525us        12  1.4600us  1.1150us  4.4250us  cudaDeviceDisablePeerAccess
+  0.00%  5.2440us        12     437ns     141ns  2.2050us  cuDeviceGet
+  0.00%  3.2450us         4     811ns     477ns  1.1330us  cudaGetLastError
+  0.00%  1.9970us         3     665ns     188ns  1.3460us  cuDeviceGetCount
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_512_1024
+==41733== NVPROF is profiling process 41733, command: ./Binary/Stencil_3D1GPU_512_1024
+==41733== Profiling application: ./Binary/Stencil_3D1GPU_512_1024
+==41733== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 95.71%  6.76938s      1024  6.6107ms  6.5742ms  6.6634ms  StencilOneStep(float*, float*)
+  2.54%  179.91ms         1  179.91ms  179.91ms  179.91ms  [CUDA memcpy DtoH]
+  1.74%  123.18ms         2  61.591ms  61.500ms  61.682ms  [CUDA memcpy HtoD]
+
+==41733== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 94.98%  7.06031s         3  2.35344s  61.622ms  6.93694s  cudaMemcpy
+  4.78%  355.11ms         2  177.55ms  705.32us  354.40ms  cudaMalloc
+  0.16%  12.086ms      1024  11.802us  5.8410us  5.6780ms  cudaLaunch
+  0.04%  2.6149ms       364  7.1830us     137ns  273.72us  cuDeviceGetAttribute
+  0.02%  1.3652ms         2  682.59us  629.86us  735.33us  cudaFree
+  0.01%  1.0140ms         4  253.51us  251.43us  255.91us  cuDeviceTotalMem
+  0.00%  358.06us      2048     174ns     152ns     632ns  cudaSetupArgument
+  0.00%  227.76us         4  56.939us  54.711us  61.269us  cuDeviceGetName
+  0.00%  194.62us      1024     190ns     171ns  2.8640us  cudaConfigureCall
+  0.00%  15.061us         1  15.061us  15.061us  15.061us  cudaSetDevice
+  0.00%  3.7700us        12     314ns     137ns     615ns  cuDeviceGet
+  0.00%  1.8700us         3     623ns     167ns  1.2620us  cuDeviceGetCount
+  0.00%     366ns         1     366ns     366ns     366ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_512_1024
+==41745== NVPROF is profiling process 41745, command: ./Binary/Stencil_3DMultiGPU_512_1024
+==41745== Profiling application: ./Binary/Stencil_3DMultiGPU_512_1024
+==41745== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 80.12%  6.88574s      4096  1.6811ms  1.6654ms  1.6980ms  StencilOneStep(float*, float*, int, int)
+ 11.80%  1.01402s      6152  164.83us  90.241us  23.727ms  [CUDA memcpy HtoD]
+  8.08%  694.41ms      6148  112.95us  80.481us  52.964ms  [CUDA memcpy DtoH]
+  0.00%  10.464us         8  1.3080us     992ns  1.9520us  [CUDA memset]
+
+==41745== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 68.03%  10.7702s     12300  875.63us  136.41us  53.325ms  cudaMemcpy
+ 31.59%  5.00200s         8  625.25ms  374.88us  1.28120s  cudaMalloc
+  0.29%  45.128ms      4096  11.017us  9.1280us  518.76us  cudaLaunch
+  0.03%  4.8437ms         8  605.46us  318.15us  1.0271ms  cudaFree
+  0.02%  3.6898ms     16384     225ns     148ns  503.51us  cudaSetupArgument
+  0.02%  2.7432ms       364  7.5360us     163ns  294.17us  cuDeviceGetAttribute
+  0.01%  1.8958ms      4096     462ns     346ns  3.3960us  cudaConfigureCall
+  0.01%  1.0532ms         4  263.31us  254.76us  282.99us  cuDeviceTotalMem
+  0.00%  243.06us         4  60.765us  57.112us  70.441us  cuDeviceGetName
+  0.00%  192.07us         8  24.008us  10.391us  40.067us  cudaMemset
+  0.00%  27.331us         4  6.8320us  5.5750us  9.3980us  cudaSetDevice
+  0.00%  5.5540us        12     462ns     163ns  2.0740us  cuDeviceGet
+  0.00%  3.0430us         4     760ns     615ns     891ns  cudaGetLastError
+  0.00%  2.9330us         3     977ns     190ns  1.5090us  cuDeviceGetCount
++ nvprof ./Binary/Stencil_P2P_512_1024
+==41762== NVPROF is profiling process 41762, command: ./Binary/Stencil_P2P_512_1024
+==41762== Profiling application: ./Binary/Stencil_P2P_512_1024
+==41762== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 90.45%  6.88803s      4096  1.6816ms  1.6659ms  1.7150ms  StencilOneStep(float*, float*, int, int)
+  4.67%  355.30ms      6144  57.828us  57.696us  58.720us  [CUDA memcpy PtoP]
+  2.61%  198.76ms         4  49.689ms  46.608ms  53.579ms  [CUDA memcpy DtoH]
+  2.27%  172.81ms         8  21.601ms  20.100ms  23.153ms  [CUDA memcpy HtoD]
+  0.00%  9.6960us         8  1.2120us     992ns  1.7600us  [CUDA memset]
+
+==41762== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 75.68%  7.69405s      4096  1.8784ms  1.4528ms  1.9901ms  cudaDeviceSynchronize
+ 16.34%  1.66072s        12  138.39ms  1.4260us  771.26ms  cudaDeviceEnablePeerAccess
+  5.53%  562.31ms      6156  91.343us  10.714us  53.881ms  cudaMemcpy
+  1.61%  163.53ms         8  20.441ms  2.8415ms  68.868ms  cudaMalloc
+  0.39%  39.501ms      4096  9.6430us  7.2830us  315.03us  cudaLaunch
+  0.32%  32.315ms         8  4.0393ms  2.3726ms  8.4611ms  cudaFree
+  0.05%  4.6508ms     16384     283ns     149ns  10.300us  cudaSetupArgument
+  0.03%  2.6096ms       364  7.1690us     150ns  272.09us  cuDeviceGetAttribute
+  0.03%  2.5631ms         4  640.77us  623.18us  662.19us  cudaGetDeviceProperties
+  0.02%  1.7757ms      4096     433ns     251ns  5.6300us  cudaConfigureCall
+  0.01%  1.0204ms         4  255.10us  253.61us  257.54us  cuDeviceTotalMem
+  0.01%  715.23us         8  89.404us  11.828us  278.27us  cudaMemset
+  0.00%  224.84us         4  56.210us  54.409us  57.844us  cuDeviceGetName
+  0.00%  52.117us        12  4.3430us     711ns  11.094us  cudaSetDevice
+  0.00%  18.488us        24     770ns     467ns  2.1020us  cudaDeviceCanAccessPeer
+  0.00%  18.107us        12  1.5080us  1.1380us  3.7200us  cudaDeviceDisablePeerAccess
+  0.00%  3.2430us        12     270ns     138ns     502ns  cuDeviceGet
+  0.00%  2.6250us         4     656ns     464ns  1.0290us  cudaGetLastError
+  0.00%  1.8620us         3     620ns     151ns  1.3000us  cuDeviceGetCount
++ for size in 128 512 1024
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_1024_128
+==41780== NVPROF is profiling process 41780, command: ./Binary/Stencil_3D1GPU_1024_128
+==41780== Profiling application: ./Binary/Stencil_3D1GPU_1024_128
+==41780== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 74.02%  6.83835s       128  53.425ms  53.173ms  53.760ms  StencilOneStep(float*, float*)
+ 15.43%  1.42551s         1  1.42551s  1.42551s  1.42551s  [CUDA memcpy DtoH]
+ 10.55%  974.70ms         2  487.35ms  487.23ms  487.47ms  [CUDA memcpy HtoD]
+
+==41780== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 96.04%  9.23810s         3  3.07937s  487.35ms  8.26321s  cudaMemcpy
+  3.83%  368.44ms         2  184.22ms  3.9321ms  364.51ms  cudaMalloc
+  0.08%  7.5779ms         2  3.7889ms  3.7055ms  3.8724ms  cudaFree
+  0.03%  2.6384ms       364  7.2480us     143ns  275.85us  cuDeviceGetAttribute
+  0.01%  1.0264ms         4  256.61us  253.50us  259.98us  cuDeviceTotalMem
+  0.01%  801.48us       128  6.2610us  5.4950us  48.677us  cudaLaunch
+  0.00%  235.24us         4  58.809us  55.528us  65.286us  cuDeviceGetName
+  0.00%  42.623us       256     166ns     153ns     837ns  cudaSetupArgument
+  0.00%  27.881us       128     217ns     184ns  3.4390us  cudaConfigureCall
+  0.00%  16.541us         1  16.541us  16.541us  16.541us  cudaSetDevice
+  0.00%  5.9300us        12     494ns     171ns  2.3840us  cuDeviceGet
+  0.00%  2.0190us         3     673ns     175ns  1.3770us  cuDeviceGetCount
+  0.00%     668ns         1     668ns     668ns     668ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_1024_128
+==41819== NVPROF is profiling process 41819, command: ./Binary/Stencil_3DMultiGPU_1024_128
+==41819== Profiling application: ./Binary/Stencil_3DMultiGPU_1024_128
+==41819== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 61.75%  6.91803s       512  13.512ms  13.460ms  13.720ms  StencilOneStep(float*, float*, int, int)
+ 20.87%  2.33832s       776  3.0133ms  533.89us  248.63ms  [CUDA memcpy HtoD]
+ 17.38%  1.94655s       772  2.5214ms  324.55us  429.07ms  [CUDA memcpy DtoH]
+  0.00%  10.560us         8  1.3200us  1.0240us  1.7920us  [CUDA memset]
+
+==41819== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 67.76%  11.4980s      1548  7.4276ms  557.97us  429.44ms  cudaMemcpy
+ 32.11%  5.44910s         8  681.14ms  1.2339ms  1.40793s  cudaMalloc
+  0.06%  10.164ms         8  1.2705ms  1.0958ms  1.5096ms  cudaFree
+  0.04%  6.6838ms       512  13.054us  10.668us  93.769us  cudaLaunch
+  0.02%  2.6255ms       364  7.2120us     139ns  286.62us  cuDeviceGetAttribute
+  0.01%  1.0140ms         4  253.49us  251.44us  254.55us  cuDeviceTotalMem
+  0.00%  403.74us      2048     197ns     150ns  5.0950us  cudaSetupArgument
+  0.00%  252.26us       512     492ns     293ns  4.8920us  cudaConfigureCall
+  0.00%  226.57us         8  28.321us  11.125us  49.737us  cudaMemset
+  0.00%  224.69us         4  56.173us  54.285us  57.851us  cuDeviceGetName
+  0.00%  48.084us         4  12.021us  5.2920us  30.679us  cudaSetDevice
+  0.00%  4.3190us         4  1.0790us     690ns  1.5600us  cudaGetLastError
+  0.00%  3.1680us        12     264ns     138ns     466ns  cuDeviceGet
+  0.00%  1.5950us         3     531ns     149ns  1.0990us  cuDeviceGetCount
++ nvprof ./Binary/Stencil_P2P_1024_128
+==41836== NVPROF is profiling process 41836, command: ./Binary/Stencil_P2P_1024_128
+==41836== Profiling application: ./Binary/Stencil_P2P_1024_128
+==41836== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 78.09%  115.17ms      4096  28.118us  27.552us  30.336us  StencilOneStep(float*, float*, int, int)
+ 19.83%  29.243ms      6144  4.7590us  4.5120us  6.0480us  [CUDA memcpy PtoP]
+  1.27%  1.8738ms         8  234.23us  195.43us  311.97us  [CUDA memcpy HtoD]
+  0.81%  1.1894ms         4  297.34us  293.25us  301.48us  [CUDA memcpy DtoH]
+  0.01%  8.7680us         8  1.0960us     992ns  1.5360us  [CUDA memset]
+
+==41836== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 80.00%  1.65330s        12  137.77ms  1.2860us  760.62ms  cudaDeviceEnablePeerAccess
+  9.01%  186.12ms      6156  30.234us  11.125us  987.93us  cudaMemcpy
+  7.02%  145.14ms      4096  35.433us  4.3400us  85.188us  cudaDeviceSynchronize
+  1.76%  36.372ms      4096  8.8790us  7.4420us  19.355us  cudaLaunch
+  0.95%  19.577ms         8  2.4471ms  1.5367ms  3.4828ms  cudaMalloc
+  0.62%  12.810ms         8  1.6013ms  764.69us  2.0561ms  cudaFree
+  0.22%  4.5920ms     16384     280ns     149ns  7.0550us  cudaSetupArgument
+  0.13%  2.6766ms       364  7.3530us     140ns  289.20us  cuDeviceGetAttribute
+  0.13%  2.6040ms         4  651.01us  638.06us  668.01us  cudaGetDeviceProperties
+  0.09%  1.7581ms      4096     429ns     231ns  15.621us  cudaConfigureCall
+  0.05%  1.0262ms         4  256.56us  253.83us  259.24us  cuDeviceTotalMem
+  0.02%  329.78us         8  41.222us  9.8830us  191.96us  cudaMemset
+  0.01%  233.98us         4  58.495us  54.723us  63.584us  cuDeviceGetName
+  0.00%  34.015us        12  2.8340us     454ns  6.7520us  cudaSetDevice
+  0.00%  18.122us        24     755ns     423ns  2.0620us  cudaDeviceCanAccessPeer
+  0.00%  15.359us        12  1.2790us     979ns  3.7280us  cudaDeviceDisablePeerAccess
+  0.00%  3.4900us        12     290ns     139ns     566ns  cuDeviceGet
+  0.00%  2.1020us         4     525ns     445ns     718ns  cudaGetLastError
+  0.00%  1.9910us         3     663ns     153ns  1.4330us  cuDeviceGetCount
++ for step in 128 1024
++ nvprof ./Binary/Stencil_3D1GPU_1024_1024
+==41855== NVPROF is profiling process 41855, command: ./Binary/Stencil_3D1GPU_1024_1024
+==41855== Profiling application: ./Binary/Stencil_3D1GPU_1024_1024
+==41855== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 95.80%  54.7465s      1024  53.463ms  53.154ms  53.780ms  StencilOneStep(float*, float*)
+  2.49%  1.42555s         1  1.42555s  1.42555s  1.42555s  [CUDA memcpy DtoH]
+  1.71%  975.14ms         2  487.57ms  487.52ms  487.62ms  [CUDA memcpy HtoD]
+
+==41855== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 99.12%  57.0418s         3  19.0139s  487.64ms  56.0665s  cudaMemcpy
+  0.67%  387.29ms         2  193.64ms  3.9205ms  383.36ms  cudaMalloc
+  0.18%  105.37ms      1024  102.90us  5.4190us  53.179ms  cudaLaunch
+  0.01%  7.5488ms         2  3.7744ms  3.7064ms  3.8423ms  cudaFree
+  0.00%  2.6270ms       364  7.2170us     142ns  280.29us  cuDeviceGetAttribute
+  0.00%  1.0139ms         4  253.47us  251.38us  255.09us  cuDeviceTotalMem
+  0.00%  335.02us      2048     163ns     152ns     869ns  cudaSetupArgument
+  0.00%  224.48us         4  56.119us  54.524us  57.664us  cuDeviceGetName
+  0.00%  194.45us      1024     189ns     178ns  3.6780us  cudaConfigureCall
+  0.00%  14.363us         1  14.363us  14.363us  14.363us  cudaSetDevice
+  0.00%  3.1420us        12     261ns     136ns     462ns  cuDeviceGet
+  0.00%  1.9250us         3     641ns     174ns  1.4060us  cuDeviceGetCount
+  0.00%     605ns         1     605ns     605ns     605ns  cudaGetLastError
++ nvprof ./Binary/Stencil_3DMultiGPU_1024_1024
+==42088== NVPROF is profiling process 42088, command: ./Binary/Stencil_3DMultiGPU_1024_1024
+==42088== Profiling application: ./Binary/Stencil_3DMultiGPU_1024_1024
+==42088== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 85.48%  55.3115s      4096  13.504ms  13.380ms  13.836ms  StencilOneStep(float*, float*, int, int)
+  8.74%  5.65329s      6152  918.94us  502.41us  208.24ms  [CUDA memcpy HtoD]
+  5.78%  3.74191s      6148  608.64us  322.63us  362.37ms  [CUDA memcpy DtoH]
+  0.00%  12.865us         8  1.6080us  1.0560us  2.2720us  [CUDA memset]
+
+==42088== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 92.89%  66.4932s     12300  5.4060ms  409.18us  362.88ms  cudaMemcpy
+  7.00%  5.01221s         8  626.53ms  1.1950ms  1.28012s  cudaMalloc
+  0.07%  50.614ms      4096  12.356us  9.8890us  526.57us  cudaLaunch
+  0.02%  15.248ms         8  1.9060ms  1.4456ms  2.2064ms  cudaFree
+  0.00%  3.0846ms     16384     188ns     148ns  4.6440us  cudaSetupArgument
+  0.00%  2.6664ms       364  7.3250us     144ns  302.48us  cuDeviceGetAttribute
+  0.00%  1.7410ms      4096     425ns     245ns  24.657us  cudaConfigureCall
+  0.00%  1.0176ms         4  254.41us  252.91us  255.27us  cuDeviceTotalMem
+  0.00%  238.62us         4  59.655us  55.488us  69.634us  cuDeviceGetName
+  0.00%  236.23us         8  29.528us  10.586us  60.990us  cudaMemset
+  0.00%  55.016us         4  13.754us  9.1500us  17.544us  cudaSetDevice
+  0.00%  3.7030us         4     925ns     640ns  1.2910us  cudaGetLastError
+  0.00%  3.5220us        12     293ns     138ns     515ns  cuDeviceGet
+  0.00%  2.5370us         3     845ns     160ns  1.2300us  cuDeviceGetCount
++ nvprof ./Binary/Stencil_P2P_1024_1024
+==42156== NVPROF is profiling process 42156, command: ./Binary/Stencil_P2P_1024_1024
+==42156== Profiling application: ./Binary/Stencil_P2P_1024_1024
+==42156== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 92.67%  55.3117s      4096  13.504ms  13.377ms  13.847ms  StencilOneStep(float*, float*, int, int)
+  3.01%  1.79623s         4  449.06ms  446.69ms  453.77ms  [CUDA memcpy DtoH]
+  2.34%  1.39511s      6144  227.07us  226.98us  228.51us  [CUDA memcpy PtoP]
+  1.99%  1.18535s         8  148.17ms  117.77ms  162.19ms  [CUDA memcpy HtoD]
+  0.00%  9.8880us         8  1.2360us  1.0240us  1.7280us  [CUDA memset]
+
+==42156== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 90.59%  58.9297s      4096  14.387ms  13.215ms  14.943ms  cudaDeviceSynchronize
+  4.97%  3.23406s      6156  525.35us  11.891us  454.06ms  cudaMemcpy
+  2.56%  1.66389s        12  138.66ms  1.3420us  788.07ms  cudaDeviceEnablePeerAccess
+  1.69%  1.09975s         8  137.47ms  5.3718ms  568.52ms  cudaMalloc
+  0.09%  57.032ms         8  7.1290ms  5.6081ms  9.6015ms  cudaFree
+  0.07%  48.671ms      4096  11.882us  8.3810us  1.7436ms  cudaLaunch
+  0.01%  7.3359ms     16384     447ns     151ns  11.252us  cudaSetupArgument
+  0.00%  2.6232ms       364  7.2060us     139ns  273.35us  cuDeviceGetAttribute
+  0.00%  2.5897ms         4  647.42us  631.14us  665.58us  cudaGetDeviceProperties
+  0.00%  2.4856ms      4096     606ns     227ns  10.861us  cudaConfigureCall
+  0.00%  1.0148ms         4  253.70us  252.48us  254.39us  cuDeviceTotalMem
+  0.00%  593.79us         8  74.223us  11.798us  312.37us  cudaMemset
+  0.00%  225.35us         4  56.338us  54.798us  57.843us  cuDeviceGetName
+  0.00%  35.943us        12  2.9950us     632ns  6.3130us  cudaSetDevice
+  0.00%  20.061us        24     835ns     416ns  2.6260us  cudaDeviceCanAccessPeer
+  0.00%  19.888us        12  1.6570us     997ns  6.4720us  cudaDeviceDisablePeerAccess
+  0.00%  3.8060us         4     951ns     532ns  1.6380us  cudaGetLastError
+  0.00%  3.5720us        12     297ns     138ns     542ns  cuDeviceGet
+  0.00%  2.0660us         3     688ns     135ns  1.4030us  cuDeviceGetCount
++ cat /var/spool/uge/r1i7n7/active_jobs/4419284.1/pe_hostfile
++ date
++ echo finish

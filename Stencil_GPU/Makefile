@@ -1,16 +1,7 @@
-OBJS= Stencil_1D1GPU Stencil_1DMultiGPU Stencil_2DMultiGPU Stencil_3DMultiGPU Stencil_2DCPU Stencil_2D1GPU Stencil_3D1GPU
+OBJS=Stencil_3D1GPU_128_1024 Stencil_3DMultiGPU_128_1024
+
 all:$(OBJS)
-Stencil_3DMultiGPU:Stencil_3DMultiGPU.cu
+Stencil_3D1GPU_128_1024:Stencil_3D1GPU.cu
 	nvcc -arch=sm_60 $? -O3 -Xcompiler -fopenmp -o $@
-Stencil_3D1GPU:Stencil_3D1GPU.cu
-	nvcc -arch=sm_60 $? -O3 -o $@
-Stencil_2DMultiGPU:Stencil_2DMultiGPU.cu
+Stencil_3DMultiGPU_128_1024:Stencil_3DMultiGPU.cu
 	nvcc -arch=sm_60 $? -O3 -Xcompiler -fopenmp -o $@
-Stencil_2D1GPU:Stencil_2D1GPU.cu
-	nvcc -arch=sm_60 $? -O3 -o $@
-Stencil_1D1GPU:Stencil_1D1GPU.cu
-	nvcc -arch=sm_60 $? -O3 -o $@
-Stencil_1DMultiGPU:Stencil_1DMultiGPU.cu
-	nvcc -arch=sm_60 $? -O3 -Xcompiler -fopenmp -o $@
-Stencil_2DCPU:Stencil_2D.cpp
-	g++ $? -O3 -std=c++11 -o $@	
